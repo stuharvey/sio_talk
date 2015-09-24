@@ -49,6 +49,8 @@ $(function() {
       canvas.addEventListener("keydown", keyPressed.bind(this), false);
       canvas.addEventListener("keyup", keyReleased.bind(this), false);
 
+      canvas.style.outline = "none";
+
       ctx = canvas.getContext("2d");
 
       // Tell the server your username
@@ -121,9 +123,17 @@ $(function() {
   function drawGame() {
     ctx.clearRect(0, 0, frameWidth, frameHeight);
     for (user in users) {
-      ctx.fillRect(users[user].pos.x - userWidth/2, 
-        users[user].pos.y - userWidth/2, 
+      var userToDraw = users[user];
+      var x = userToDraw.pos.x;
+      var y = userToDraw.pos.y;
+      ctx.save();
+      ctx.fillStyle = getUsernameColor(user);
+      ctx.fillRect(x - userWidth/2, y - userWidth/2, 
         userWidth, userWidth);
+      ctx.fillStyle = "rgb(0,0,0)";
+      ctx.font = "11px Oswald";
+      ctx.fillText(userToDraw.name, x - userWidth/2, y - userWidth/1.5);
+      ctx.restore();
     }
   }
 
