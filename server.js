@@ -36,7 +36,6 @@ io.on('connection', function (socket) {
     };
     ++numUsers;
     addedUser = true;
-    console.log(users);
     socket.emit('login', users);
     io.emit('user joined', users);
   });

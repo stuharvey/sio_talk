@@ -138,7 +138,6 @@ $(function() {
 
   // Whenever the server emits 'login', log the login message
   socket.on('login', function (data) {
-    console.log("Received login: data = " + JSON.stringify(data));
     connected = true;
     users = data;
     startGameLoop();
