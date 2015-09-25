@@ -6,5 +6,4 @@ following in a command line:
     git clone https://github.com/stuharvey/sio_talk.git
     cd sio_talk
     npm install
-    npm install -s socket.io
-    npm start
+    node server
